@@ -1,17 +1,61 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { BrowserRouter, Routes, Route, Link, useLocation } from 'react-router-dom';
 import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+
+import HOC from './examples/HOC';
+import Callback from './examples/Callback';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
+const LINKS = [{
+  path: '/hoc',
+  name: 'memo HOC',
+  element: <HOC title="Apples counter" />,
+}, {
+  path: '/callback',
+  name: 'useCallback',
+  element: <Callback />,
+}, {
+  path: '/use-memo',
+  name: 'useMemo',
+  element: null,
+}, {
+  path: '/should-component-update',
+  name: 'shouldComponentUpdate',
+  element: null,
+}, {
+  path: '/pure-component',
+  name: 'PureComponent',
+  element: null,
+}]
+
+const Navigation = () => {
+  const { pathname } = useLocation();
+  return (
+    <nav>
+      {LINKS.map(({ path, name }) => (
+        <Link to={path} key={path}>
+          <span className={pathname === path ? 'nav-item--active' : ''}>
+            {name}
+          </span>
+        </Link>
+      ))}
+    </nav>
+  );
+}
+
 root.render(
   <React.StrictMode>
-    <App />
+    <h1>React memo examples</h1>
+    <BrowserRouter>
+      <Navigation />
+      <Routes>
+        <Route path="" element={<></>} />
+        {LINKS.map(({ path, element }) => (
+          <Route path={path} element={element} key={path} />
+        ))}
+      </Routes>
+    </BrowserRouter>
   </React.StrictMode>
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();

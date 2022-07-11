@@ -3,31 +3,39 @@ import ReactDOM from 'react-dom/client';
 import { BrowserRouter, Routes, Route, Link, useLocation } from 'react-router-dom';
 import './index.css';
 
-import HOC from './examples/HOC';
-import Callback from './examples/Callback';
+import Memo from './examples/Memo';
+import UseCallback from './examples/UseCallback';
+import UseMemo from './examples/UseMemo';
+import UseRef from './examples/UseRef';
+import ShouldComponentUpdate from './examples/ShouldComponentUpdate';
+import PureComponent from './examples/PureComponent';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 const LINKS = [{
-  path: '/hoc',
-  name: 'memo HOC',
-  element: <HOC title="Apples counter" />,
+  path: '/memo',
+  name: 'memo',
+  element: <Memo title="Apples counter" />,
 }, {
   path: '/callback',
   name: 'useCallback',
-  element: <Callback />,
+  element: <UseCallback />,
 }, {
   path: '/use-memo',
   name: 'useMemo',
-  element: null,
+  element: <UseMemo />,
+}, {
+  path: '/use-ref',
+  name: 'useRef',
+  element: <UseRef />
 }, {
   path: '/should-component-update',
   name: 'shouldComponentUpdate',
-  element: null,
+  element: <ShouldComponentUpdate title="Apples counter with shouldComponentUpdate" />,
 }, {
   path: '/pure-component',
   name: 'PureComponent',
-  element: null,
+  element: <PureComponent title="Apples counter with PureComponent" />,
 }]
 
 const Navigation = () => {
@@ -46,7 +54,7 @@ const Navigation = () => {
 }
 
 root.render(
-  <React.StrictMode>
+  <>
     <h1>React memo examples</h1>
     <BrowserRouter>
       <Navigation />
@@ -57,5 +65,5 @@ root.render(
         ))}
       </Routes>
     </BrowserRouter>
-  </React.StrictMode>
+  </>
 );

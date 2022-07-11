@@ -10,14 +10,19 @@ const Component = ({ title }) => {
   return (
     <>
       <Title text={title} size="large" />
+      <p>
+        Current: {counter}
+      </p>
       <button onClick={handleClick}>
-        Current: {counter}, put 1 more
+        Put 1 more
       </button>
     </>
   );
 };
 
+
 const Title = ({ text, size }) => {
+  console.log('render title')
   return (
     <h2 className={size}>
       {text}

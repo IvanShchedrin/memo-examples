@@ -1,29 +1,31 @@
-import React, { useState } from 'react';
+import React, { useState, memo } from 'react';
 
-const Component = () => {
+const Component = ({ increaseBy = 1 }) => {
   const [counter, setCounter] = useState(0);
 
   const handleClick = () => {
-    setCounter(counter + 1);
+    setCounter(counter + increaseBy);
   };
 
   return (
     <>
-      <h2>Current: {counter}</h2>
+      <p>Current: {counter}</p>
       <Button
-        text="Add 1 more"
+        text="Add more"
         onClick={handleClick}
       />
     </>
   );
 };
 
-const Button = ({ text, onClick }) => {
+
+const Button = memo(({ text, onClick }) => {
+  console.log('render button');
   return (
     <button onClick={onClick}>
       {text}
     </button>
   );
-};
+});
 
 export default Component;

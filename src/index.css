@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
   font-family: San Francisco, Arial, sans-serif;
 }
@@ -20,6 +24,10 @@ a:hover, .nav-item--active {
   color: #2433ff;
 }
 
+section {
+  margin-bottom: 12px;
+}
+
 button {
   padding: 6px 12px;
   font-size: 16px;
@@ -32,4 +40,13 @@ button {
 button:active {
   background: #e9ecff;
   border-color: #858585;
+}
+
+input[type="number"] {
+  margin-left: 10px;
+  width: 40px;
+}
+
+textarea {
+  width: 100%;
 }

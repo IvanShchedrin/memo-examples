@@ -6,6 +6,10 @@ body {
   font-family: San Francisco, Arial, sans-serif;
 }
 
+h1 {
+  font-size: 24px;
+}
+
 nav {
   display: flex;
   gap: 16px;

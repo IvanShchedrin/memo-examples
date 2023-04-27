@@ -1,33 +1,33 @@
 import React, { useState } from 'react';
 
 const Component = ({ title }) => {
-  const [counter, setCounter] = useState(0);
+    const [counter, setCounter] = useState(0);
 
-  const handleClick = () => {
-    setCounter(counter + 1);
-  };
+    const handleClick = () => {
+        setCounter(counter + 1);
+    };
 
-  return (
-    <>
-      <Title text={title} size="large" />
-      <p>
-        Current: {counter}
-      </p>
-      <button onClick={handleClick}>
-        Put 1 more
-      </button>
-    </>
-  );
+    return (
+        <>
+            <Title text={title} size="large"/>
+            <p>
+                Current: {counter}
+            </p>
+            <button onClick={handleClick}>
+                Put 1 more
+            </button>
+        </>
+    );
 };
 
 
 const Title = ({ text, size }) => {
-  console.log('render title')
-  return (
-    <h2 className={size}>
-      {text}
-    </h2>
-  );
+    console.log('render');
+    return (
+        <h2 className={size}>
+            {text}
+        </h2>
+    );
 };
 
 export default Component;

@@ -1,32 +1,22 @@
-import React, { memo, useMemo, useState } from 'react';
+import React from 'react';
 
-
-export const Test = () => {
-    const [value, setValue] = useState('');
-    
-    const titleComponent = useMemo(() => () => <InnerTest text='h2' />, []);
-
+const Component = () => {
     return (
-        <>
-            <OuterTest
-                Title={titleComponent}
-            />
-            <textarea value={value} onChange={(e) => setValue(e.target.value)} />
-        </>
+        <ComponentWithChildren
+            title={<h2>Title as element</h2>}
+        >
+            Child
+        </ComponentWithChildren>
+    )
+}
+
+const ComponentWithChildren = ({ children, title }) => {
+    return (
+        <div>
+            {title}
+            {children}
+        </div>
     );
 };
 
-const OuterTest = memo(({ Title }) => {
-    console.log('render inner');
-    return (
-        <div>
-            <Title /> - is a title
-        </div>
-    );
-});
-
-const InnerTest = memo(({ text }) => {
-    return (
-        <span>{text}</span>
-    )
-});
+export default Component;
